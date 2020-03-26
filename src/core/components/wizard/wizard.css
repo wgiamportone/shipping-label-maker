@@ -1,0 +1,14 @@
+/* Wizard Styles */
+
+.progress {
+  background: lightgrey;
+  height: 1em;
+  width: 100%;
+}
+
+.progress__bar {
+  background: blue;
+  height: 1em;
+  transition: width .3s ease-in;
+  width: 0;
+}
