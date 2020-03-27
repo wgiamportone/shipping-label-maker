@@ -4,7 +4,7 @@ import ShippingLabelMaker from 'features/shipping-label-maker/shipping-label-mak
 
 function App() {
   return (
-    <main>
+    <main className="app">
       <ShippingLabelMaker />
     </main>
   );

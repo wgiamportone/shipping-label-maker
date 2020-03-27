@@ -1,1 +1,68 @@
 /* App Styles */
+.app {
+  align-items: center;
+  background-color: GhostWhite;
+  color: DarkSlateGrey;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.btn,
+.btn:visited {
+  border: none;
+  cursor: pointer;
+  transition: all .3s ease-in;
+}
+
+.btn:hover,
+.btn:focus {
+  outline-color: coral;
+}
+
+.btn--primary {
+  background-color: RoyalBlue;
+  border-radius: 0.2em;
+  color: GhostWhite;
+  padding: 0.8em 1.6em;
+}
+
+.btn--primary:hover,
+.btn--primary:active,
+.btn--primary:focus {
+  background-color: MidnightBlue;
+}
+
+.btn--text {
+  color: SlateGrey;
+  margin: 0 0.8em;
+  padding: 0.8em;
+}
+
+.btn--text:hover,
+.btn--text:active,
+.btn--text:focus {
+  color: DarkSlateGrey;
+}
+
+h1 {
+  font-size: 1.6em;
+}
+
+label {
+  width: 100%;
+}
+
+input {
+  border: 1px solid Silver;
+  border-radius: 0.2em;
+  height: 2.4em;
+}
+
+@media screen and (min-width: 720px) {
+  h1 {
+    font-size: 2em;
+  }
+}

@@ -1,14 +1,51 @@
 /* Wizard Styles */
+.wizard {
+  background-color: white;
+  border-radius: 0.2em;
+  box-shadow: 0 0.1em 1.6em rgba(176, 196, 222, 0.3);
+  padding: 1.6em;
+  width: 90%;
+}
 
-.progress {
-  background: lightgrey;
-  height: 1em;
+.wizard__header {
+  margin: 1.6em 0;
+}
+
+.progress-bar {
+  background-color: Gainsboro;
+  border-radius: 0.2em;
+  height: 0.2em;
+  margin: 1em 0;
+  overflow: hidden;
   width: 100%;
 }
 
-.progress__bar {
-  background: blue;
+.progress-bar__fill {
+  background: RoyalBlue;
   height: 1em;
   transition: width .3s ease-in;
   width: 0;
+}
+
+.wizard__step {
+  margin: 0;
+  padding: 0;
+}
+
+.wizard__footer {
+  border-top: 1px solid Gainsboro;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 3.2em;
+  padding: 1.6em 0;
+}
+
+@media screen and (min-width: 720px) {
+  .wizard {
+    max-width: 640px;
+    padding: 1.6em 3.2em;
+    width: 66%;
+  }
 }

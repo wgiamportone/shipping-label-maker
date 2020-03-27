@@ -8,7 +8,7 @@ class Wizard extends React.Component {
     this.state = {
       currentStep: 0,
       numberOfSteps: this.props.steps.length
-    }
+    };
   }
 
   nextStep = () => {
@@ -19,28 +19,33 @@ class Wizard extends React.Component {
     this.setState({ currentStep: this.state.currentStep - 1 })
   }
 
+  complete = (event) => {
+    event.preventDefault()
+    const { onComplete, wizardContext } = this.props;
+    onComplete(wizardContext);
+  }
+
   render() {
     const { header, steps, wizardContext } = this.props;
     const { currentStep, numberOfSteps } = this.state;
 
     const firstStep = currentStep === 0;
-    const lastStep = currentStep === numberOfSteps;
-
+    const lastStep = currentStep === (numberOfSteps - 1);
     const Step = steps[currentStep];
 
     return (
-      <form>
-        <header>
-          {header && <h1>{header}</h1>}
-          <div className="progress">
-            <div className="progress__bar" style={{ width: `${(currentStep + 1) / numberOfSteps * 100}%` }} />
+      <form className="wizard">
+        <header className="wizard__header">
+          <h1>{header}</h1>
+          <div className="progress-bar">
+            <div className="progress-bar__fill" style={{ width: `${(currentStep + 1) / numberOfSteps * 100}%` }} />
           </div>
         </header>
-        <Step wizardContext={wizardContext} handleChange={this.props.handleChange} />
-        <footer>
-          {!firstStep && <button type="button" onClick={this.prevStep}>Previous</button>}
-          {!lastStep && <button type="button" onClick={this.nextStep}>Next</button>}
-          {lastStep && <input type="submit" value="Submit" />}
+        <Step className="wizard__step" wizardContext={wizardContext} handleChange={this.props.handleChange} />
+        <footer className="wizard__footer">
+          {!firstStep && <button className="btn btn--text" type="button" onClick={this.prevStep}>Previous</button>}
+          {!lastStep && <button className="btn btn--primary" type="button" onClick={this.nextStep}>Next</button>}
+          {lastStep && <button className="btn btn--primary" type="submit" onClick={this.complete}>Submit</button>}
         </footer>
       </form>
     );
@@ -48,8 +53,10 @@ class Wizard extends React.Component {
 }
 
 Wizard.propTypes = {
+  header: PropTypes.string.isRequired,
   steps: PropTypes.array.isRequired,
-  wizardContext: PropTypes.object.isRequired
+  wizardContext: PropTypes.object.isRequired,
+  onComplete: PropTypes.func.isRequired
 };
 
 export default Wizard;

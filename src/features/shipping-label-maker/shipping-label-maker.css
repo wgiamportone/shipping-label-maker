@@ -1,1 +1,67 @@
-/* Shipping Lable Maker Styles */
+/* Shipping Lable Maker & Step Styles */
+.step {
+  border: none;
+}
+
+.step__heading {
+  font-size: 1em;
+  line-height: 1.6em;
+  margin-bottom: 1.6em;
+}
+
+.step__sub-heading {
+  font-size: 1.2em;
+  font-weight: 600;
+  line-height: 1.6em;
+  margin: 1.6em 0 0;
+}
+
+.step__group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.step__group-inner {
+  display: block;
+  padding-right: 1em;
+  width: 100%;
+}
+
+.step__group-inner--col-2 {
+  width: 50%;
+}
+
+.step__group-inner--col-3 {
+  width: 50%;
+}
+
+@media screen and (min-width: 720px) {
+  .step__group-inner--col-3 {
+    width: 33%;
+  }
+}
+
+.step__label {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.step__label--inline {
+  display: inline;
+  margin-bottom: 0;
+  margin-left: 1em;
+}
+
+.step__input {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.radio-group {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}

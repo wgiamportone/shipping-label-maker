@@ -31,9 +31,10 @@ class ShippingLabelMaker extends React.Component {
         shippingOption: ''
       }
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const value = event.target.value;
     const name = event.target.getAttribute('name');
     const isObject = event.target.getAttribute('data-object');
@@ -52,6 +53,10 @@ class ShippingLabelMaker extends React.Component {
     }
   }
 
+  handleSubmit(wizardContext) {
+    console.log('Shipping label content captured:', wizardContext.from, wizardContext.to, wizardContext.weight, wizardContext.shippingOption);
+  }
+
   render() {
     const { wizardContext } = this.state;
 
@@ -63,6 +68,7 @@ class ShippingLabelMaker extends React.Component {
         wizardContext={wizardContext}
         handleChange={this.handleChange}
         steps={steps}
+        onComplete={this.handleSubmit}
       />
     );
   }
