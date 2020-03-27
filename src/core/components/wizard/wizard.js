@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './wizard.css';
 
 class Wizard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentStep: 1,
-      numberOfSteps: this.props.children.length
+      currentStep: 0,
+      numberOfSteps: this.props.steps.length
     }
   }
 
@@ -19,24 +20,26 @@ class Wizard extends React.Component {
   }
 
   render() {
-    const { className, header, wizardContext } = this.props;
+    const { header, steps, wizardContext } = this.props;
     const { currentStep, numberOfSteps } = this.state;
-    const firstStep = currentStep === 1;
+
+    const firstStep = currentStep === 0;
     const lastStep = currentStep === numberOfSteps;
 
+    const Step = steps[currentStep];
+
     return (
-      <form className={className}>
+      <form>
         <header>
           {header && <h1>{header}</h1>}
           <div className="progress">
-            <div className="progress__bar" style={{ width: `${(currentStep) / numberOfSteps * 100}%` }} />
+            <div className="progress__bar" style={{ width: `${(currentStep + 1) / numberOfSteps * 100}%` }} />
           </div>
         </header>
-        {this.props.children[currentStep - 1]}
+        <Step wizardContext={wizardContext} handleChange={this.props.handleChange} />
         <footer>
           {!firstStep && <button type="button" onClick={this.prevStep}>Previous</button>}
           {!lastStep && <button type="button" onClick={this.nextStep}>Next</button>}
-
           {lastStep && <input type="submit" value="Submit" />}
         </footer>
       </form>
@@ -44,13 +47,9 @@ class Wizard extends React.Component {
   }
 }
 
-function WizardStep({ className, header, children }) {
-  return (
-    <section>
-      <h2>{header}</h2>
-      <div>{children}</div>
-    </section>
-  );
-}
+Wizard.propTypes = {
+  steps: PropTypes.array.isRequired,
+  wizardContext: PropTypes.object.isRequired
+};
 
-export { Wizard, WizardStep };
+export default Wizard;
